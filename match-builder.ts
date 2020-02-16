@@ -1,5 +1,4 @@
-import { QueryBuilderFunc } from "../src/pipelines/query/common/parse-query";
-import { IMatchBuilder } from "./imatch-builder";
+import { IMatchBuilder, QueryBuilderFunc } from "./imatch-builder";
 import { WhereOp, IMatch } from "./query-model";
 
 export class MatchBuilder implements IMatchBuilder {
