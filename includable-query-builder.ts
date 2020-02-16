@@ -1,5 +1,4 @@
-import { QueryBuilderFunc, IncludableQueryBuilderFunc } from "../src/pipelines/query/common/parse-query";
-import { IMatchBuilder } from "./imatch-builder";
+import { IMatchBuilder, QueryBuilderFunc, IncludableQueryBuilderFunc } from "./imatch-builder";
 import { MatchBuilder } from "./match-builder";
 import { WhereOp, IQueryModel } from "./query-model";
 export class IncludableQueryBuilder implements IMatchBuilder {
