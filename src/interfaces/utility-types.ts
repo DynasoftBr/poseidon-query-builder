@@ -84,7 +84,7 @@ export type SingleOrSet<T, K extends IncludableKeys<T>, TIncludeResult = null> =
   : IncludedResult<T[K], TIncludeResult>;
 
 export type NewProperty<T, K extends string, TK> = { [key in keyof T | K]: (T & { [k in K]: TK })[key] };
-export interface AggregateBuilder<T, R = {}> {
+export interface AggregateBuilder<T, R = Record<string, unknown>> {
   $sum<K extends KnownKeys<T, number>, A extends string = K>(key: K, as?: A): AggregateBuilder<T, NewProperty<R, A, number>>;
   $count<K extends KnownKeys<T, number>, A extends string = K>(key: K, as?: A): AggregateBuilder<T, NewProperty<R, A, number>>;
   $avg<K extends KnownKeys<T, number>, A extends string = K>(key: K, as?: A): AggregateBuilder<T, NewProperty<R, A, number>>;

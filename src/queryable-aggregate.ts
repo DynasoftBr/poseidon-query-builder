@@ -1,6 +1,6 @@
-import { AggregateBuilder, QueryAggregate, KnownKeys, NewProperty, SimpleKeys } from "./interfaces/utility-types";
+import { AggregateBuilder, KnownKeys, NewProperty, QueryAggregate, SimpleKeys } from "./interfaces/utility-types";
 
-export class QueryableAggregate<T, R = {}> implements AggregateBuilder<T, R> {
+export class QueryableAggregate<T, R = Record<string, unknown>> implements AggregateBuilder<T, R> {
   constructor(private readonly _aggregate: QueryAggregate) { }
 
   $sum<K extends KnownKeys<T, number>, A extends string = K>(key: K, as?: A): AggregateBuilder<T, NewProperty<R, A, number>> {

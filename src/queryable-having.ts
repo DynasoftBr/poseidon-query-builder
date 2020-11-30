@@ -1,4 +1,4 @@
-import { HavingBuilder, HavingConditionGroup, KnownKeys, Operators, HavingCompareFunc, HavingOperandFuncion, AggregateFuncs, HavingCondition } from "./interfaces/utility-types";
+import { AggregateFuncs, HavingBuilder, HavingCompareFunc, HavingCondition, HavingConditionGroup, HavingOperandFuncion, KnownKeys, Operators } from "./interfaces/utility-types";
 
 export class QueryableHaving<T> implements HavingBuilder<T> {
   constructor(private readonly group: HavingConditionGroup<T>) { }
@@ -14,21 +14,21 @@ export class QueryableHaving<T> implements HavingBuilder<T> {
   $sum<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: T[K]): this;
   $sum<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: (f: HavingCompareFunc<T>) => void): this;
   $sum<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K], field?: boolean): this;
-  $sum<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>, field?: boolean): this {
+  $sum<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>): this {
     return this.addHavingCondition("$sum", key, operator, operand);
   }
 
   $count<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: T[K]): this;
   $count<K extends KnownKeys<T, number>>(key: K, operator: Operators, func: (f: HavingCompareFunc<T>) => void): this;
   $count<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K], field?: boolean): this;
-  $count<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>, field?: boolean): this {
+  $count<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>): this {
     return this.addHavingCondition("$sum", key, operator, operand);
   }
 
   $avg<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: T[K]): this;
   $avg<K extends KnownKeys<T, number>>(key: K, operator: Operators, func: (f: HavingCompareFunc<T>) => void): this;
   $avg<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K], field?: boolean): this;
-  $avg<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>, field?: boolean): this {
+  $avg<K extends KnownKeys<T, number>>(key: K, operator: Operators, operand: K | T[K] | HavingOperandFuncion<T>): this {
     return this.addHavingCondition("$sum", key, operator, operand);
   }
 

@@ -1,0 +1,39 @@
+{
+  "name": "@poseidon/core-models",
+  "version": "0.0.11",
+  "description": "Core models for poseidon ecosystem.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Leandro-Albano/poseidon.git"
+  },
+  "author": "dynasoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Leandro-Albano/poseidon/issues"
+  },
+  "files": [
+    "dist",
+    "dist.browser"
+  ],
+  "homepage": "https://github.com/Leandro-Albano/poseidon",
+  "main": "dist/index.js",
+  "types": "src/",
+  "keywords": [
+    "poseidon"
+  ],
+  "scripts": {
+    "build": "npm run clean:dist && npm run lint-ts && tsc && tsc -p tsconfig.browser.json",
+    "clean:dist": "npm run rimraf -- dist",
+    "rimraf": "rimraf",
+    "lint-ts": "npx eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint": "^7.14.0",
+    "rimraf": "^3.0.0",
+    "typescript": "^4.1.2"
+  }
+}

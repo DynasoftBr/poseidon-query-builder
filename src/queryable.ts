@@ -1,21 +1,21 @@
-import { QueryableFilter } from "./queryable-filter";
-import { QueryableHaving } from "./queryable-having";
-import { QueryableAggregate } from "./queryable-aggregate";
 import { Query } from "./interfaces/query";
+import { IncludeBuilder, QueryBuilder } from "./interfaces/query-builder";
 import {
-  Simplified,
-  Describe,
-  IncludableKeys,
+  AggregateBuilder, Describe,
+
   ExtractIncludable,
   FilterBuilderInterface,
-  HavingBuilder,
-  AggregateBuilder,
+  HavingBuilder, IncludableKeys,
+
+
+
+
   Included,
-  Resolver,
-  SimpleKeys,
-  KnownKeys,
+  Resolver
 } from "./interfaces/utility-types";
-import { QueryBuilder, IncludeBuilder } from "./interfaces/query-builder";
+import { QueryableAggregate } from "./queryable-aggregate";
+import { QueryableFilter } from "./queryable-filter";
+import { QueryableHaving } from "./queryable-having";
 
 export class Queryable<T, TRoot = T, TResult = T, Paginated = false> implements QueryBuilder<T, TRoot, TResult, Paginated> {
   public constructor(private resolver: Resolver<T>, public readonly _query: Query<T> = {}) {
@@ -70,7 +70,7 @@ export class Queryable<T, TRoot = T, TResult = T, Paginated = false> implements 
     return new Queryable<T, TRoot, { [k in K]: TResult[k] }, Paginated>(this.resolver, this._query);
   }
 
-  paginate<K extends keyof TResult>(skip: number, take: number): Queryable<T, TRoot, TResult, true> {
+  paginate(skip: number, take: number): Queryable<T, TRoot, TResult, true> {
     this._query.$skip = skip;
     this._query.$take = take;
 
