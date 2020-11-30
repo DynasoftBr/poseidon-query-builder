@@ -1,7 +1,7 @@
 {
-  "name": "@poseidon/core-models",
+  "name": "@poseidon/query-builder",
   "version": "0.0.11",
-  "description": "Core models for poseidon ecosystem.",
+  "description": "Query builder for poseidon API.",
   "repository": {
     "type": "git",
     "url": "https://github.com/Leandro-Albano/poseidon.git"
