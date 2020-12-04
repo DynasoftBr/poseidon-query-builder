@@ -1,16 +1,15 @@
+aimport { IncludedQueryable } from "..";
 import {
   AggregateBuilder, ExtractIncludable,
 
 
   FilterBuilderInterface,
   HavingBuilder, IncludableKeys,
-
-
   Included
 } from "./utility-types";
 
 export type IncludeBuilder<T, TRoot, K extends IncludableKeys<T>, TResult> = (
-  builder: QueryBuilder<ExtractIncludable<T, K>, TRoot>
+  builder: IncludedQueryable<ExtractIncludable<T, K>, TRoot>
 ) => QueryBuilder<ExtractIncludable<T, K>, TRoot, TResult>;
 
 export interface QueryBuilder<T, TRoot = T, TResult = T, Paginated = false> {

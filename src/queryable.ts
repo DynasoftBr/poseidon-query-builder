@@ -1,3 +1,4 @@
+import { IncludedQueryable } from ".";
 import { Query } from "./interfaces/query";
 import { IncludeBuilder, QueryBuilder } from "./interfaces/query-builder";
 import {
@@ -6,10 +7,6 @@ import {
   ExtractIncludable,
   FilterBuilderInterface,
   HavingBuilder, IncludableKeys,
-
-
-
-
   Included,
   Resolver
 } from "./interfaces/utility-types";
@@ -34,7 +31,7 @@ export class Queryable<T, TRoot = T, TResult = T, Paginated = false> implements 
     b?: IncludeBuilder<T, TRoot, K, R>
   ): Queryable<T, TRoot, Included<T, TResult, K, R>, Paginated> {
     let includeKeyQuery: Query<ExtractIncludable<T, K>> = null;
-    b && (includeKeyQuery = {}) && b(new Queryable<ExtractIncludable<T, K>, TRoot>(null, includeKeyQuery));
+    b && (includeKeyQuery = {}) && b(new IncludedQueryable<ExtractIncludable<T, K>, TRoot>(includeKeyQuery));
 
     this._query.$include = this._query.$include || {};
     this._query.$include[k] = includeKeyQuery || true;

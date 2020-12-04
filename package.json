@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "npm run clean:dist && npm run lint-ts && tsc && tsc -p tsconfig.browser.json",
-    "clean:dist": "npm run rimraf -- dist",
+    "clean:dist": "npm run rimraf -- dist && npm run rimraf -- dist.browser",
     "rimraf": "rimraf",
     "lint-ts": "npx eslint . --ext .js,.jsx,.ts,.tsx"
   },
