@@ -1,4 +1,4 @@
-aimport { IncludedQueryable } from "..";
+import { IncludedQueryable } from "..";
 import {
   AggregateBuilder, ExtractIncludable,
 
